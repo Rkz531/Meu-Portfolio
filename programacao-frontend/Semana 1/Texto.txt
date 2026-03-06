@@ -1,0 +1,1 @@
+O Vs code permite você instalar extenções, que facilitam a programação e dising gráfico, além disso permite você instalar as linguagens que irá utilizar direto pelo editor, a organização e ajuda na sintase também são pontos significativos, além de especificarem onde e qual linha está com erro.

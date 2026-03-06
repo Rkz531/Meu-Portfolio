@@ -1,0 +1,11 @@
+Prezado,
+
+Venho por meio desta informar que as recomendações de produtos personalizadas pertencem à área de front-end, pois estão diretamente relacionadas ao que o cliente visualiza e com o que irá interagir na interface.
+
+Já a validação do formulário de pagamento corresponde à parte de back-end, uma vez que envolve a análise e validação dos dados enviados. Caso as informações estejam incorretas, o sistema deverá retornar uma mensagem de erro apropriada.
+
+Desde já, agradeço pelo seu tempo.
+
+Atenciosamente,
+Erick P.
+Equipe de Desenvolvimento

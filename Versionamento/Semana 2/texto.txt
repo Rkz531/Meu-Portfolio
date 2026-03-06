@@ -1,0 +1,10 @@
+Público ou privado? Por quê O plano A e seria privado por causa de dados de paciente e de funcionários do hospital  o plano B pode ser público porque ele seria para diversos usuários
+Quais riscos de cada escolha? Para o plano A não teria problemas porque ele e privado mais se ele fosse publico seria um problema por causa dos dados sensíveis, para o plano B não teria nenhum risco ser publico porque não conte nenhum dados pessoal 
+É possível mudar no futuro? para o plano A não seria possível ser publico por causa dos dados, ja o plano B poder ser mudado para o privado 
+Que medidas de segurança implementar? para o plano A seria bom manutenção de bacos de dados semanal, servidores privados backup constante 
+
+
+
+Qual ferramenta de versionamento vocês escolheriam para a empresa mencionada no contexto?
+Justifiquem suas escolhas com base no que foi discutido na aula?
+   a ferra menta seria o github por causa da facilidade de organização e velocidade e porque e gratuito as fermentas diferente do gitlab que seria mais seguro mais seria mais difícil o versionamento e algumas ferramentas não seriam gratuitas
