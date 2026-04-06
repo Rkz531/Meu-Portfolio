@@ -1,0 +1,8 @@
+Olá,
+
+Boa tarde.
+
+Durante o desenvolvimento do aplicativo de catálogo de produtos, definimos que a navegação entre a tela principal e a tela de detalhes será realizada por meio do ID único de cada produto. Na tela principal, o usuário visualizará uma lista de produtos e, ao selecionar um item, a aplicação enviará o ID correspondente para a tela de detalhes. Essa tela utilizará o ID recebido para consultar o banco de dados ou uma API e carregar todas as informações completas do produto selecionado, exibindo-as ao usuário. Essa abordagem segue boas práticas de desenvolvimento, pois mantém o código organizado, facilita a manutenção do sistema e contribui para a qualidade e escalabilidade do projeto a longo prazo.
+
+Atenciosamente,
+Equipe de Desenvolvimento

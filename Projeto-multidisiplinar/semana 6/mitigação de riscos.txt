@@ -1,0 +1,21 @@
+1.    Revisão dos riscos identificados (8 minutos)
+
+    Revisem os riscos que vocês listaram durante a análise SWOT da aula anterior;
+    Discutam as estratégias que podem ser usadas para mitigar esses riscos. A mitigação consiste em reduzir ou eliminar o impacto de cada risco.
+
+Exemplo de riscos identificados em um contexto de um projeto sobre um evento de formatura:
+
+•    Risco 1: Orçamento limitado para decoração;
+•    Risco 2: Possível baixa adesão dos alunos.
+
+• Risco 1: Dificuldade para obter informações do cartório
+Mitigação: Conversar diretamente com o responsável e validar as informações antes de usar no sistema.
+
+• Risco 2: Falta de tempo para desenvolver todas as funcionalidades
+Mitigação: Priorizar as partes mais importantes do sistema e seguir um cronograma.
+
+• Risco 3: Possíveis erros no sistema (formulários, validação de dados, CEP, etc.)
+Mitigação: Fazer testes durante o desenvolvimento e corrigir os erros antes da entrega final.
+
+• Risco 4: Dificuldades técnicas durante o desenvolvimento
+Mitigação: Pesquisar soluções, testar aos poucos e salvar o projeto no GitHub com frequência.

@@ -1,0 +1,11 @@
+Pergunta 1: o papel do Gerador
+Minha estratégia foi desenhar características mais óbvias do objeto. Usei os erros do discriminador para ajustar o desenho e deixá-lo mais claro. Sim, a cada rodada fui melhorando.
+
+Pergunta 2: o papel do Discriminador
+Eu analisava os detalhes do desenho e tentava associar com objetos conhecidos. No começo era mais no chute, depois fui ficando mais preciso. Sim, meu critério melhorou com o tempo.
+
+Pergunta 3: aprendizado por tentativa e erro
+O gerador melhorou porque ajustava o desenho após cada erro do discriminador. A competição fez com que os desenhos ficassem mais claros e fáceis de entender.
+
+Pergunta 4: aplicação em outros contextos
+Pode ser usado em geração de textos, onde uma IA escreve e outra avalia se o texto parece humano, ajudando a melhorar a qualidade.

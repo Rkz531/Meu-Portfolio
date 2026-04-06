@@ -1,0 +1,57 @@
+CREATE TABLE Veiculos (
+    VeiculoID INT PRIMARY KEY AUTO_INCREMENT,
+    Modelo VARCHAR(100),
+    Marca VARCHAR(100),
+    Ano INT,
+    Status VARCHAR(20),
+    PrecoDiaria DECIMAL(10, 2)
+);
+
+CREATE TABLE Clientes (
+    ClienteID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Email VARCHAR(100),
+    Cidade VARCHAR(50),
+    Idade INT,
+    CategoriaCliente VARCHAR(20),
+    AnosAssociacao INT
+);
+
+INSERT INTO Veiculos (Modelo, Marca, Ano, Status, PrecoDiaria)
+VALUES 
+('HB20', 'Hyundai', 2018, 'Semi-novo', 150.00),
+('Corolla', 'Toyota', 2021, 'Novo', 200.00),
+('Civic', 'Honda', 2019, 'Semi-novo', 180.00),
+('Gol', 'Volkswagen', 2020, 'Novo', 160.00),
+('Onix', 'Chevrolet', 2017, 'Semi-novo', 140.00);
+
+INSERT INTO Clientes (Nome, Email, Cidade, Idade, CategoriaCliente, AnosAssociacao)
+VALUES
+('Ana Silva', 'ana@email.com', 'São Paulo', 30, 'Prata', 6),
+('João Souza', 'joao@email.com', 'Barueri', 25, 'Bronze', 3),
+('Maria Lima', 'maria@email.com', 'Osasco', 40, 'Prata', 7),
+('Carlos Pereira', 'carlos@email.com', 'Jandira', 35, 'Bronze', 2),
+('Fernanda Costa', 'fernanda@email.com', 'Barueri', 28, 'Prata', 8);
+
+SELECT * FROM Veiculos;
+SELECT * FROM Clientes;
+
+UPDATE Veiculos 
+  SET PrecoDiaria = PrecoDiaria * 1.10
+  WHERE Ano < 2020;
+
+UPDATE Clientes
+  SET CategoriaCliente = 'Ouro'
+  WHERE AnosAssociacao >= 5;
+
+UPDATE Veiculos
+  SET Status = 'Em manutenção'
+  WHERE VeiculoID IN (3,5);
+
+SELECT Status, PrecoDiaria
+FROM Veiculos
+WHERE Ano < 2020;
+
+SELECT Nome, CategoriaCliente
+FROM Clientes
+WHERE AnosAssociacao >= 5;

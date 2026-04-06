@@ -1,0 +1,24 @@
+Que tipo de “criação” cada produto precisa fazer?
+
+R: GAN é feito para criações de vídeos e imagens, o VAE é usado como compressor criativo, como um artista, exemplo, cor de cabelo, idade etc. Já o GPT é usado como escrever textos.
+
+Vocês acham que a mesma tecnologia serve para todos?
+
+R: Não, pois o GPT não vai criar vídeos de forma tão eficiente quando o GAN faria, assim como o GAN  não faria textos como o GPT faz.
+
+Que desafios cada produto pode enfrentar?
+
+R: A IA não é perfeita, como causar erros e ela pode repetir diversas vezes a mesma coisa, além de questões éticas.
+
+Como a curiosidade pode levar a soluções inovadoras em momentos
+de impasse?
+
+R: A curiosidade e possibilidades pode ajudar a romper bloqueios técnicos. 
+
+ Como a cooperação entre diferentes visões pode gerar breakthrough?
+
+R: As diferentes perspectiva ajuda a alcançar avanços tecnológicos.
+
+Quando persistir e quando é hora de mudar de estratégia?
+
+R:Depende a situação, como avaliação de riscos e tempo disponível.

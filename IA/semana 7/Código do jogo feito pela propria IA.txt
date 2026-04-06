@@ -1,0 +1,283 @@
+javascript:
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+
+const words = ["cachorro", "carro", "casa", "gato", "árvore", "sol", "computador"];
+let currentWord = "";
+let role = "";
+let turn = "gerador";
+let attempts = 0;
+
+const roleText = document.getElementById('role');
+const turnText = document.getElementById('turn');
+const chat = document.getElementById('chat');
+const attemptsBox = document.getElementById('attempts');
+const input = document.getElementById('guessInput');
+const passBtn = document.getElementById('passBtn');
+
+// Botões
+document.getElementById('newGameBtn').onclick = startGame;
+document.getElementById('clearBtn').onclick = clearCanvas;
+document.getElementById('sendBtn').onclick = sendGuess;
+document.getElementById('passBtn').onclick = passTurn;
+document.getElementById('themeBtn').onclick = toggleTheme;
+
+// ENTER para enviar
+input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") sendGuess();
+});
+
+// ================= GAME =================
+
+function startGame() {
+    role = Math.random() > 0.5 ? "gerador" : "discriminador";
+    turn = "gerador";
+    attempts = 0;
+
+    currentWord = words[Math.floor(Math.random() * words.length)];
+
+    updateRole();
+    updateTurn();
+
+    if (role === "gerador") {
+        alert("Desenhe: " + currentWord);
+    } else {
+        alert("Aguarde o desenho!");
+    }
+
+    clearCanvas();
+    chat.innerHTML = "";
+    attemptsBox.innerHTML = "Tentativas: 0";
+}
+
+// ================= ATUALIZAÇÕES =================
+
+function updateRole() {
+    roleText.innerText = "Você é: " + role.toUpperCase();
+}
+
+function updateTurn() {
+    turnText.innerText = "Turno: " + turn.toUpperCase();
+    passBtn.disabled = (turn === "fim");
+}
+
+// ================= TROCA COMPLETA =================
+
+function passTurn() {
+    if (turn === "fim") return;
+
+    // troca turno
+    turn = turn === "gerador" ? "discriminador" : "gerador";
+
+    // 🔥 troca papel do jogador também
+    role = role === "gerador" ? "discriminador" : "gerador";
+
+    updateTurn();
+    updateRole();
+
+    if (role === "gerador") {
+        chat.innerHTML += `<div>🎨 Agora você é o GERADOR! Desenhe!</div>`;
+    } else {
+        chat.innerHTML += `<div>🧠 Agora você é o DISCRIMINADOR! Adivinhe!</div>`;
+    }
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+// ================= DESENHO =================
+
+canvas.addEventListener('mousedown', () => {
+    if (role === "gerador" && turn === "gerador") {
+        drawing = true;
+    }
+});
+
+canvas.addEventListener('mouseleave', () => drawing = false);
+window.addEventListener('mouseup', () => drawing = false);
+
+canvas.addEventListener('mousemove', (e) => {
+    if (!drawing) return;
+
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(e.offsetX, e.offsetY, 3, 0, Math.PI * 2);
+    ctx.fill();
+});
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// ================= PALPITES =================
+
+function sendGuess() {
+    if (role !== "discriminador" || turn !== "discriminador") {
+        alert("Não é sua vez de adivinhar!");
+        return;
+    }
+
+    const guess = input.value.toLowerCase().trim();
+    if (!guess) return;
+
+    attempts++;
+
+    chat.innerHTML += `<div>🧠 Palpite: ${guess}</div>`;
+    attemptsBox.innerHTML = `Tentativas: ${attempts}`;
+
+    if (guess === currentWord) {
+        chat.innerHTML += `<div style="color:lightgreen">✔ Acertou!</div>`;
+        alert("Discriminador venceu!");
+        turn = "fim";
+        updateTurn();
+    } else {
+        chat.innerHTML += `<div style="color:red">✖ Errado</div>`;
+    }
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+// ================= TEMA =================
+
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+}
+
+Css:
+
+body.dark {
+    background: #1e1e2f;
+    color: white;
+}
+
+body.light {
+    background: #f4f4f4;
+    color: black;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+#gameContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+canvas {
+    background: white;
+    border: 3px solid #444;
+    cursor: crosshair;
+}
+
+#controls {
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+#chat,
+#attempts {
+    width: 300px;
+}
+
+body.dark { background: #1e1e2f; color: white; }
+body.light { background: #f4f4f4; color: black; }
+
+#gameContainer { display: flex; justify-content: space-around; margin-top: 20px; }
+
+canvas { background: white; border: 3px solid #444; cursor: crosshair; }
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  background: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover { background: #45a049; }
+
+input { padding: 10px; border-radius: 8px; border: none; }
+
+#chat, #attempts {
+  width: 300px;
+  height: 120px;
+  overflow-y: auto;
+  background: #111;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px auto;
+}
+
+body.light #chat, body.light #attempts { background: #ddd; }
+
+#role, #turn { font-weight: bold; margin-top: 5px; }
+
+html:
+
+<!-- ================= HTML (index.html) ================= -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAN Game - Gerador vs Discriminador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark">
+
+    <h1>🎨 GAN Game: Gerador vs Discriminador</h1>
+    <div id="role"></div>
+    <div id="turn"></div>
+
+    <div id="gameContainer">
+        <canvas id="canvas" width="400" height="400"></canvas>
+
+        <div>
+            <div id="chat"></div>
+            <div id="attempts"></div>
+            <input type="text" id="guessInput" placeholder="Digite seu palpite...">
+            <br>
+            <button id="sendBtn">Enviar</button>
+            <button id="passBtn">Passar vez</button>
+        </div>
+    </div>
+
+    <div id="controls">
+        <button id="newGameBtn">Novo Jogo</button>
+        <button id="clearBtn">Limpar</button>
+        <button id="themeBtn">Trocar Tema</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

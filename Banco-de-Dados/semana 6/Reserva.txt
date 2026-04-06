@@ -1,0 +1,77 @@
+DROP DATABASE IF EXISTS semana6; // Excluei um banco de dados caso exista.
+CREATE DATABASE semana6; // Cria um banco de dados.
+USE semana6; // Pede para usar a semana6 como banco de dado.
+
+CREATE TABLE Salas (
+    SalaID INT PRIMARY KEY,
+    NomeSala VARCHAR(50)
+);
+
+CREATE TABLE Reservas (
+    ReservaID INT AUTO_INCREMENT PRIMARY KEY,
+    SalaID INT,
+    DataReserva DATETIME, -- Formato ano-més-dia-horas-minutos-segundos
+    Usuario VARCHAR(100),
+    FOREIGN KEY (SalaID) REFERENCES Salas(SalaID)
+);
+
+INSERT INTO Salas (SalaID, NomeSala) VALUES (1, 'Sala A');
+
+
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+--define o nível de isolamento das transações da sua sessão atual para SERIALIZABLE, que é o mais alto nível de isolamento.
+
+BEGIN;
+
+
+INSERT INTO Reservas (SalaID, DataReserva, Usuario)
+SELECT 1, '2024-08-21 10:00:00', 'Pedro' 
+WHERE NOT EXISTS (
+    SELECT 1 FROM Reservas
+    WHERE SalaID = 1 AND DataReserva = '2024-08-21 10:00:00'
+); -- faz com que não tenha duplicatas de reservas no mesmo horário.
+
+
+COMMIT;
+
+
+ROLLBACK;
+
+SELECT * FROM Reservas,salas;
+
+
+
+CREATE TABLE Salas (
+    SalaID INT PRIMARY KEY,
+    NomeSala VARCHAR(50),
+    Capacidade INT
+);
+
+CREATE TABLE Reservas (
+    ReservaID INT AUTO_INCREMENT PRIMARY KEY,
+    SalaID INT,
+    DataReserva DATETIME,
+    Usuario VARCHAR(100),
+    FOREIGN KEY (SalaID) REFERENCES Salas(SalaID)
+);
+
+INSERT INTO Salas (SalaID, NomeSala, Capacidade) VALUES
+(1, 'Sala A', 10),
+(2, 'Sala B', 20);
+
+START TRANSACTION;
+
+INSERT INTO Reservas (SalaID, DataReserva, Usuario)
+SELECT 1, '2026-03-25 11:00:00', 'Erick'
+WHERE NOT EXISTS (
+    SELECT 1 FROM Reservas
+    WHERE SalaID = 1 AND DataReserva = '2026-03-25 11:00:00'
+);
+
+COMMIT;
+
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+START TRANSACTION;
+UPDATE Salas SET NomeSala = 'Nova Sala A' WHERE SalaID = 1;
+UPDATE Salas SET NomeSala = 'Nova Sala A' WHERE SalaID = 2;

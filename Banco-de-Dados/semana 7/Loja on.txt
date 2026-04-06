@@ -1,0 +1,46 @@
+CREATE TABLE cliente (
+  cliente_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  endereco VARCHAR(45) NOT NULL,
+  idade INT NOT NULL
+);
+
+CREATE TABLE produto (
+  produto_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(45),
+  descricao VARCHAR(150),
+  quantidade INT
+);
+
+CREATE TABLE pedidos (
+  pedidos_id INT PRIMARY KEY AUTO_INCREMENT,
+  cliente_id INT,
+  produto_id INT,
+  endereco VARCHAR(40),
+  Data DATE,
+  foreign KEY (produto_id) references Produto(produto_id),
+  foreign KEY (cliente_id) references cliente(cliente_id)
+);
+
+
+INSERT INTO cliente (name, endereco, idade)
+VALUES ('Jorge', 'Osasco', 30);
+
+INSERT INTO produto (nome, descricao, quantidade)
+VALUES ('Caneta','Azul',1);
+
+INSERT INTO pedidos (cliente_id, produto_id, endereco, data)
+VALUES (1, 1, 'novo osasco', '2024-03-18');
+
+SELECT * FROM cliente WHERE idade = 31;
+SELECT * FROM produto;
+SELECT * FROM pedidos;
+
+DELETE FROM produto WHERE quantidade = 0;
+
+UPDATE cliente
+SET idade = 31
+WHERE cliente_id = 1;
+
+SELECT * FROM cliente;
+SELECT * FROM pedidos;
